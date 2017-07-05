@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * Handles display, control and storage of export data fragment
+ */
 public class exportfrag extends Fragment {
     private ButtonRectangle export;
     private TextView pathtext;
@@ -34,6 +37,13 @@ public class exportfrag extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * Create export fragment view
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,14 +56,19 @@ public class exportfrag extends Fragment {
         export = (ButtonRectangle) view.findViewById(R.id.export);
         export.setOnClickListener(new View.OnClickListener() {
 
+            /**
+             * Handles data export process when user selects export button
+             * @param view
+             */
             @Override
             public void onClick(View view) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},112);
+                ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},112); // ensure app has access to write to storage
                 String state = Environment.getExternalStorageState();
                 ArrayList<String[]> data;
                 String[] info;
                 File dir, file;
 
+                // set storage location
                 if(Environment.MEDIA_MOUNTED.equals(state)) {
                     dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/ICAS/");
                     if(!dir.exists()) { dir.mkdirs(); }
@@ -74,7 +89,6 @@ public class exportfrag extends Fragment {
                     data = db.getPostureTests();
                     for(int i = 0; i < data.size(); i++){
                         db.exportAccelData(i+1);
-
                     }
 
                     //Notify User export is complete
@@ -101,6 +115,11 @@ public class exportfrag extends Fragment {
                 });
     }
 
+    /**
+     * Formats String array to comma seperated string
+     * @param data - String array
+     * @return - String
+     */
     private String formatLine(String[] data){
         String line = "";
 
@@ -116,6 +135,11 @@ public class exportfrag extends Fragment {
         return line;
     }
 
+    /**
+     * Writes data to file
+     * @param file
+     * @param data
+     */
     private void writeFile(File file, ArrayList<String[]> data){
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(file);
