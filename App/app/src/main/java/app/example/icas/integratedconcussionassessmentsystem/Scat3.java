@@ -17,9 +17,10 @@ import com.gc.materialdesign.views.ButtonRectangle;
 import java.util.ArrayList;
 
 /**
- * SCAT 3 Test, Fragment Manager
+ * SCAT 3 Test, Fragment Manager. Created by Maryam Kaka.
  */
 public class Scat3 extends FragmentActivity{
+    //Allows for methods from different fragments to be called
     private symptomEvalFrag symptomEvalFrag = new symptomEvalFrag();
     private cogAssessmentFrag cogAssessmentFrag = new cogAssessmentFrag();
     private digitsFrag digitsFrag = new digitsFrag();
@@ -35,7 +36,7 @@ public class Scat3 extends FragmentActivity{
 
     //Array containing test selection from dialog box
     private int[] testselection;
-    //Array increased by 1 cell to accout for months backward frag
+    //Array increased by 1 cell to account for months backward frag
     private int[] augmented_testselection = {0,0,0,0,0};
 
     /**
@@ -45,6 +46,7 @@ public class Scat3 extends FragmentActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        //Forces UI into fullscreen to prevent date and time from being shown
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);

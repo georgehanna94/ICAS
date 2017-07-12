@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 
 /**
  * Created by George on 2017-02-10.
+ * The following fragment handles the About I-CAS section of the app
+ * Most of the information displayed on the user's screen is static and
+ * can be found in the abouticas.xml file
  */
 
 public class abouticas extends Fragment {
-
 
     @Nullable
     @Override

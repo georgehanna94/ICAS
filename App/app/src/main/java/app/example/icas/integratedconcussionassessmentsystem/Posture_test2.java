@@ -11,13 +11,17 @@ import com.gc.materialdesign.views.ButtonRectangle;
 import static android.view.View.GONE;
 
 /**
- * Posturagraphy Activity
+ * Posturagraphy Activity. Created by Maryam Kaka. The following activity will act as fragment
+ * manager for the posture test once it is started. The fragments Pre_posture_questions and
+ * postureTest_instructions will be passed through it in chronological fashion.
  */
 
 
 public class Posture_test2 extends FragmentActivity{
+    //Allows methods within postureTest_instructions to be called from within Posture_Test2
     private postureTest_instructions postureTest_instructions = new postureTest_instructions();
     private Pre_posture_questions Pre_posture_questions = new Pre_posture_questions();
+    //Vars
     private ButtonRectangle next,prev;
     private boolean updateStatus;
     private int currentFrag = 0;
@@ -31,6 +35,7 @@ public class Posture_test2 extends FragmentActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.posture_test2);
+        //Setup up buttons
         next = (ButtonRectangle) findViewById(R.id.next);
         prev = (ButtonRectangle) findViewById(R.id.prev);
 
@@ -82,6 +87,7 @@ public class Posture_test2 extends FragmentActivity{
     }
 
 
+    //Method used to allow for disabling of previous button
     public void disablePrev(View view){
         prev.setVisibility(View.GONE);
     }

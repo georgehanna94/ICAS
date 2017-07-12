@@ -10,6 +10,9 @@ import com.facebook.stetho.Stetho;
 
 import app.example.icas.integratedconcussionassessmentsystem.firsttimeform.background_form2;
 
+/**
+ * Created by George Hanna. Handles the launch screen of the application
+ */
 public class LoginActivity extends AppCompatActivity {
 
     //Splash Screen Timer (I know its not good UI practice...buts its pretty)
@@ -26,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
          */
         Stetho.initializeWithDefaults(this);
 
+        //Create Handler for splash screen launch. A form will be shown to the user if it is their first
+        //time accessing the application.
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

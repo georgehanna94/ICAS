@@ -13,10 +13,12 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 /**
- * Created by George on 2017-02-10.
+ * Created by George on 2017-02-10. This fragment handles the profile section of the application.
+ * User information which was recorded during launch will be displayed here.
  */
 
 public class myprofile extends Fragment {
+    //Variables
     private TextView name, domHand, edu, age, gen, injuryDate, nPastConcuss, pastConcussDate, hosp, head, LD, depress, famHist, med;
     private dbHelper db;
 
@@ -32,6 +34,7 @@ public class myprofile extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("My Profile");
 
+        //User information will be stored in ArrayList
         ArrayList<String> userInfo = new ArrayList<>();
 
         //Initialize database
@@ -53,6 +56,7 @@ public class myprofile extends Fragment {
         famHist = (TextView) view.findViewById(R.id.famHist);
         med = (TextView) view.findViewById(R.id.med);
 
+        //Call user info from database
         userInfo = db.getUserInfo();
 
         //set textview

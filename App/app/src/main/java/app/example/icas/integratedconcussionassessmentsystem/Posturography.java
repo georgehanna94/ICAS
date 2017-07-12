@@ -15,6 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * Created by George Hanna. The following activity handles the posture test section of the app.
+ * It is accessed from the mainmenu. This activity includes two tabs: history and visualize.
+ */
 public class Posturography extends AppCompatActivity {
 
 
@@ -30,6 +34,7 @@ public class Posturography extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posturography);
 
+        //Set up toolbar for tabs
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -44,6 +49,7 @@ public class Posturography extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        //Floating action button for starting the test
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.posturetest_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +84,7 @@ public class Posturography extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Handles what happens when back button pressed
     @Override
     public void onBackPressed() {
         Intent getHomeScreen = new Intent(this, Homescreen.class);
@@ -85,6 +92,7 @@ public class Posturography extends AppCompatActivity {
     }
 
 
+    //Handles swiping between tabs
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -108,7 +116,7 @@ public class Posturography extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 2 total pages.
             return 2;
         }
 

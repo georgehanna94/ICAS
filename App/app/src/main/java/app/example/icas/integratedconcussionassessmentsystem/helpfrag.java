@@ -11,6 +11,9 @@ import app.example.icas.integratedconcussionassessmentsystem.R;
 
 /**
  * Created by George on 2017-02-10.
+ * The following fragment handles the Help section of the app
+ * Most of the information displayed on the user's screen is static and
+ * can be found in the helpfrag.xml file
  */
 
 public class helpfrag extends Fragment {

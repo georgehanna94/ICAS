@@ -9,21 +9,22 @@ import android.widget.ImageView;
 
 import com.gc.materialdesign.views.ButtonRectangle;
 
+/**
+ * Created by George Hanna. The following activity handles  the SCAT3 instruction screen
+ */
 
 public class scat3_instructions extends AppCompatActivity {
-    //Button next,skip;
-    ImageView   instr_pic,instr_word;
-    ButtonRectangle StartScat3;
 
-    private int image_index =0,click_index =1;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scat3_instructions);
 
+
         final int[] array = getIntent().getIntArrayExtra("SelectedTests");
         final int numones = getIntent().getIntExtra("NbOnes",1);
 
+        //Set up button and on click listener for starting SCAT3 test
         final ButtonRectangle scat3start = (ButtonRectangle) findViewById(R.id.toscat3);
         scat3start.setOnClickListener(new View.OnClickListener() {
             @Override

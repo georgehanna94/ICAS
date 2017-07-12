@@ -33,6 +33,8 @@ public class Scat3_landing extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+
+    //Array to handle selected tests from dialog box pop up
     public int testselection[] = {0,0,0,0,0};
     public int numones = 0;
 
@@ -155,7 +157,7 @@ public class Scat3_landing extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 2 total pages.
             return 2;
         }
 

@@ -13,10 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * Created by George on 2017-02-10.
+ * Created by George on 2017-02-10. Activity handling the display of all four ICAS tests to the user.
  */
 
 public class mainmenu extends Fragment {
+    //Variables
     private ImageButton scat3, posture, eyeGaze, EEG;
     private dbHelper db;
 
@@ -42,10 +43,11 @@ public class mainmenu extends Fragment {
         eeg.setVisibility(View.VISIBLE);
         eyegaze.setVisibility(View.VISIBLE);
 
+        //Welcome text
         TextView welcomeTxt = (TextView) view.findViewById(R.id.welcomeTxt);
         welcomeTxt.setText("Hello, " + db.getUser());
 
-        //Makes Images Interactive to access each test
+        //Makes Images Interactive to access SCAT3
         scat3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +60,7 @@ public class mainmenu extends Fragment {
             }
         });
 
-        //Makes Images Interactive to access each test
+        //Makes Images Interactive to access Posture Test
         posture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +72,7 @@ public class mainmenu extends Fragment {
             }
         });
 
-
+        //Makes Images Interactive to access EEG
         eeg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +83,7 @@ public class mainmenu extends Fragment {
             }
         });
 
+        //Makes Images Interactive to access EYegaze
         eyegaze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

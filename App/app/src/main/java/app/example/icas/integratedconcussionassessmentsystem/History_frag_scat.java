@@ -18,14 +18,14 @@ import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import de.codecrafters.tableview.toolkit.SortStateViewProviders;
 
-
+/**
+ * Created by George Hanna
+ This fragment handles the history tab of the scat3 test in the ICAS app
+ The table used in this section can be found on github: https://github.com/ISchwarz23/SortableTableView
+ */
 public class History_frag_scat extends Fragment {
-    /**
-     * The fragment argument representing the section number for this
-     * fragment.
-     */
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
+    //Variable Definitions
     private final static String[][] DATA_TO_SHOW = new String[5][2];
     private ArrayList<String[]> data = new ArrayList();
     private static final String[] headerdata = {"1", "2"};
@@ -45,9 +45,9 @@ public class History_frag_scat extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Database
         db = new dbHelper(getContext());
         data = db.getSCAT3Test();
-
 
         //Create Sortable Table
         SortableTableView<String[]> tableView = (SortableTableView<String[]>) view.findViewById(R.id.tableView);
@@ -68,6 +68,7 @@ public class History_frag_scat extends Fragment {
         columnModel.setColumnWeight(1,2);
         tableView.setColumnModel(columnModel);
 
+        //Handles table behaviour and colour
         tableView.setHeaderBackgroundColor(getResources().getColor(R.color.colorAccent));
         tableView.setSwipeToRefreshEnabled(true);
         tableView.setSwipeToRefreshListener(new SwipeToRefreshListener() {
@@ -84,6 +85,7 @@ public class History_frag_scat extends Fragment {
 
     }
 
+    //Updates table with new entries
     public void updatetable(){
         data = db.getSCAT3Test();
         if (!(data.isEmpty())) {

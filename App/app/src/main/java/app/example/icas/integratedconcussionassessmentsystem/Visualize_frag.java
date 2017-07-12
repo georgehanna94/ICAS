@@ -12,7 +12,6 @@ public class Visualize_frag extends Fragment {
      * The fragment argument representing the section number for this
      * fragment.
      */
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -25,14 +25,15 @@ import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import de.codecrafters.tableview.toolkit.SortStateViewProviders;
 
+/**
+ * Created by George Hanna
+ This fragment handles the history tab of the posturography test in the ICAS app
+ The table used in this section can be found on github: https://github.com/ISchwarz23/SortableTableView
+ */
 
 public class History_frag_posture extends Fragment {
-    /**
-     * The fragment argument representing the section number for this
-     * fragment.
-     */
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
+    //Variables
     private final static String[][] DATA_TO_SHOW = new String[5][2];
     private ArrayList<String[]> data = new ArrayList();
     private static final String[] headerdata = {"1", "2"};
@@ -52,9 +53,9 @@ public class History_frag_posture extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Call database and load previous posture tests
         db = new dbHelper(getContext());
         data = db.getPostureTests();
-
 
         //Create Sortable Table
         SortableTableView<String[]> tableView = (SortableTableView<String[]>) view.findViewById(R.id.tableView);
@@ -75,12 +76,12 @@ public class History_frag_posture extends Fragment {
         columnModel.setColumnWeight(1,2);
         tableView.setColumnModel(columnModel);
 
+        //Handles table behaviour and colour
         tableView.setHeaderBackgroundColor(getResources().getColor(R.color.colorAccent));
         tableView.setSwipeToRefreshEnabled(true);
         tableView.setSwipeToRefreshListener(new SwipeToRefreshListener() {
             @Override
             public void onRefresh(RefreshIndicator refreshIndicator) {
-                //Do stuff here
                 refreshIndicator.hide();
                 updatetable();
                 posn_in_table++;
@@ -91,6 +92,7 @@ public class History_frag_posture extends Fragment {
 
     }
 
+    //Updates table with new entries
     public void updatetable(){
         data = db.getPostureTests();
         if (!(data.isEmpty())) {

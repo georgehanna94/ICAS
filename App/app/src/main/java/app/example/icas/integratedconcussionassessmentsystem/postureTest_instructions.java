@@ -30,7 +30,8 @@ import java.util.Date;
 import static android.view.View.GONE;
 
 /**
- * Posturography Fragment
+ * Posturography Fragment. Created by Maryam Kaka. This fragment will handle the display of posture
+ * instructions prior to beginning data collection.
  */
 
 public class postureTest_instructions extends Fragment implements SensorEventListener   {
@@ -39,11 +40,11 @@ public class postureTest_instructions extends Fragment implements SensorEventLis
     private int[] image_instructions;
     public Posture_test2 ParentActivity;
     private TextView Statusmsg;
+    //Images of the instruction and the instruction sentence itself
     ImageView   instr_pic,instr_word;
     private int image_index =0,click_index =1;
     private Sensor mySensor;
     private SensorManager SM;
-    //private AVLoadingIndicatorView avi;
     private dbHelper db;
     private long testID;
     public String path = Environment.getExternalStorageDirectory().getAbsolutePath()+ "/ICAS/Posture";
@@ -88,11 +89,6 @@ public class postureTest_instructions extends Fragment implements SensorEventLis
 
         Statusmsg = (TextView) getView().findViewById(R.id.statusmsg);
         Statusmsg.setVisibility(GONE);
-
-        //Create Loading Animation
-        //avi = (AVLoadingIndicatorView) getView().findViewById(R.id.avi);
-        //avi.setVisibility(GONE);
-        //avi.setIndicator(indicator);
 
         //Create timer object
         countDownTimer = new postureTest_instructions.MyCountDownTimer(10000, 1000);

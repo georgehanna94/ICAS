@@ -27,7 +27,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-
+/**
+ * Created by George Hanna. The following activity handles the homescreen of the ICAS app. This
+ * screen includes the navigation bar and calls mainmenu.java which displays all four tests available to the user.
+ */
 public class Homescreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -42,6 +45,7 @@ public class Homescreen extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Handles user interaction of the navigation drawer
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -62,7 +66,6 @@ public class Homescreen extends AppCompatActivity
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
 
-        //create widgets
     }
 
     private void setupDrawerContent(NavigationView navigationview){

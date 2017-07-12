@@ -18,7 +18,8 @@ import com.gc.materialdesign.views.ButtonRectangle;
 import app.example.icas.integratedconcussionassessmentsystem.firsttimeform.background_form2;
 
 /**
- * Created by George on 2017-02-10.
+ * Created by George on 2017-02-10. This fragment handles the setting section of the application.
+ * The user may use this section for reset the application or to modify profile information
  */
 
 public class settingsfrag extends Fragment {
@@ -40,6 +41,8 @@ public class settingsfrag extends Fragment {
         db = new dbHelper(getContext());
 
         reset = (ButtonRectangle) getView().findViewById(R.id.reset);
+
+        //Modify button will be used to change user profile information
         modify = (ButtonRectangle) getView().findViewById(R.id.modify);
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +52,7 @@ public class settingsfrag extends Fragment {
             }
         });
 
+        //Reset button will be used to delete storage (includes test data)
         reset.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Dialog box will appear upon button press
