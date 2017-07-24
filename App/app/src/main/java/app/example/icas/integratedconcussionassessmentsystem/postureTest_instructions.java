@@ -114,6 +114,10 @@ public class postureTest_instructions extends Fragment implements SensorEventLis
         //If BESS test is complete return to main page
         if (click_index == 6) {
             System.out.println("about to return");
+            Statusmsg.setVisibility(View.GONE);
+            //Temporary fix for inability of screen to return to main menu
+            ParentActivity.enableBtns(getView());
+
             return false;
         }
 
@@ -127,6 +131,7 @@ public class postureTest_instructions extends Fragment implements SensorEventLis
             instr_word.setVisibility(GONE);
 
             Statusmsg.setVisibility(View.VISIBLE);
+            countDownTimer.start();
             // avi.setVisibility(View.VISIBLE);
             // startAnim();
 
@@ -175,6 +180,7 @@ public class postureTest_instructions extends Fragment implements SensorEventLis
 
         @Override
         public void onFinish() {
+            System.out.println("Done Counting");
             nextQuestion();
         }
 

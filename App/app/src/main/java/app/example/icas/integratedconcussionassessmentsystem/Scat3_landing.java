@@ -27,6 +27,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static java.security.AccessController.getContext;
 
 
 public class Scat3_landing extends AppCompatActivity {
@@ -37,6 +40,7 @@ public class Scat3_landing extends AppCompatActivity {
     //Array to handle selected tests from dialog box pop up
     public int testselection[] = {0,0,0,0,0};
     public int numones = 0;
+    public boolean unchecked = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,20 +70,22 @@ public class Scat3_landing extends AppCompatActivity {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(Scat3_landing.this);
                 View mView = getLayoutInflater().inflate(R.layout.scat3dialogoptions,null);
                 final RadioGroup scat3options = (RadioGroup) mView.findViewById(R.id.scat3options);
-
                 Button starttest = (Button) mView.findViewById(R.id.scat3startbutton);
+
+
 
                 starttest.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         //Check which tests are selected in dialog box and update Test Selection Array
-                        for (int i=0;i<5;i++){
-                            //Check if symptom Eval is selected
-                            if (((CheckBox)scat3options.getChildAt(i)).isChecked()){
-                                testselection[i]=1;
-                                numones++;
+                            for (int i = 0; i < 5; i++) {
+                                //Check if symptom Eval is selected
+                                if (((CheckBox) scat3options.getChildAt(i)).isChecked()) {
+                                    testselection[i] = 1;
+                                    numones++;
+                                }
                             }
-                        }
+
                         //Push Test Selection Information onto next activity, and start instructions
                         Intent intent = new Intent(Scat3_landing.this,scat3_instructions.class);
                         intent.putExtra("SelectedTests",testselection);

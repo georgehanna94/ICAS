@@ -2,6 +2,7 @@ package app.example.icas.integratedconcussionassessmentsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonRectangle;
 
+import java.io.File;
+
 import app.example.icas.integratedconcussionassessmentsystem.firsttimeform.background_form2;
 
 /**
@@ -25,6 +28,7 @@ import app.example.icas.integratedconcussionassessmentsystem.firsttimeform.backg
 public class settingsfrag extends Fragment {
     private ButtonRectangle reset,modify;
     private dbHelper db;
+    File dir;
 
     @Nullable
     @Override
@@ -39,6 +43,9 @@ public class settingsfrag extends Fragment {
         getActivity().setTitle("Settings");
 
         db = new dbHelper(getContext());
+
+        dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/ICAS/");
+
 
         reset = (ButtonRectangle) getView().findViewById(R.id.reset);
 
@@ -67,6 +74,14 @@ public class settingsfrag extends Fragment {
                     public void onClick(View view) {
                                                 //Push Test Selection Information onto next activity, and start instructions
                         db.deleteDatabase();
+                        if (dir.isDirectory())
+                        {
+                            String[] children = dir.list();
+                            for (int i = 0; i < children.length; i++)
+                            {
+                                new File(dir, children[i]).delete();
+                            }
+                        }
                         Toast.makeText(getContext(),"Done", Toast.LENGTH_LONG).show();
                         dialog.dismiss();
                     }

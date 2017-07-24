@@ -58,9 +58,10 @@ public class History_frag_scat extends Fragment {
         tableView.setHeaderSortStateViewProvider(SortStateViewProviders.darkArrows());
         tableView.setHeaderAdapter(simpleTableHeaderAdapter);
 
-        updatetable();
-        posn_in_table++;
-        tableView.setDataAdapter(new SimpleTableDataAdapter(getActivity(),DATA_TO_SHOW));
+        //Disabled temporarilly, crashes because rows are not being added dynamically
+        //updatetable();
+        //posn_in_table++;
+        //tableView.setDataAdapter(new SimpleTableDataAdapter(getActivity(),DATA_TO_SHOW));
 
         //Set Column Widths
         TableColumnWeightModel columnModel = new TableColumnWeightModel(2);
@@ -70,7 +71,8 @@ public class History_frag_scat extends Fragment {
 
         //Handles table behaviour and colour
         tableView.setHeaderBackgroundColor(getResources().getColor(R.color.colorAccent));
-        tableView.setSwipeToRefreshEnabled(true);
+        //Set to TRUE if SWIPING TO REFRESH is to be enabled
+        tableView.setSwipeToRefreshEnabled(false);
         tableView.setSwipeToRefreshListener(new SwipeToRefreshListener() {
             @Override
             public void onRefresh(RefreshIndicator refreshIndicator) {
